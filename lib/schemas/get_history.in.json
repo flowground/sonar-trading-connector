@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "from": {
+            "required": true,
+            "type": "string"
+        },
+        "to": {
+            "required": true,
+            "type": "string"
+        },
+        "date": {
+            "required": true,
+            "type": "string"
+        },
+        "amount": {
+            "required": false,
+            "type": "string"
+        },
+        "decimal_places": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,98 @@
+{
+    "title": "Sonar Trading",
+    "description": "Currency Authority: Exchange Rate of 1453 country currencies and crypto currencies",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/sonar.trading/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://sonar.trading/api/v1/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "get_convert": {
+            "main": "./lib/actions/get_convert.js",
+            "title": "Convert a currency amount to multiple other currencies",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_convert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_country_currencies": {
+            "main": "./lib/actions/get_country_currencies.js",
+            "title": "Return a list of all currencies of countries, available via service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_country_currencies.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_digital_currencies": {
+            "main": "./lib/actions/get_digital_currencies.js",
+            "title": "Return a list of all digital currencies, available via service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_digital_currencies.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_history": {
+            "main": "./lib/actions/get_history.js",
+            "title": "Return a historic rate for a currencies",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_history.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
